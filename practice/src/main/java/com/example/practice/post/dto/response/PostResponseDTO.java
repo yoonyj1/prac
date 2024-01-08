@@ -1,16 +1,24 @@
 package com.example.practice.post.dto.response;
 
-import java.util.List;
-
 import com.example.practice.post.entity.Post;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
+@Getter
 @Data
-@Builder
 public class PostResponseDTO {
-
-	private List<Post> postList;
 	
+	private final String title;
+	private final String content;
+	
+	public PostResponseDTO(Post post) {
+		this.title = post.getTitle();
+		this.content = post.getContent();
+	}
+	
+	public static PostResponseDTO of(Post post) {
+		return new PostResponseDTO(post);
+	}
+
 }

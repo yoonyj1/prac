@@ -9,8 +9,18 @@ import com.example.practice.post.entity.Post;
 @Mapper
 public interface PostMapper {
 
+	// C
+	boolean createPost(Post post);
+	
+	// R
 	List<Post> findAll();
 	
+	Post findPostByIdx(Long idx);
 	
-	boolean insertPost(Post post);
+	// U
+	boolean modifyPost(Post post);
+	
+	// D
+	boolean deletePost(Long idx);
+
 }

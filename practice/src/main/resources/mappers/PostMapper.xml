@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
 <mapper namespace="com.example.practice.post.repository.PostMapper">
+	
+	<insert id="createPost">
+		INSERT INTO post
+		(post_title, post_content)
+		VALUES (#{title}, #{content});
+	</insert>
+	
 	<select id="findAll" resultType="post">
-		select
-			post_idx,
-			post_title,
-			post_content
-			FROM POST
-			ORDER BY post_idx desc
+		SELECT
+		post_idx,
+		post_title,
+		post_content
+		FROM post
+		ORDER BY post_idx desc
 	</select>
+	
+	<select id="findPostByIdx" resultType="post">
+		SELECT
+		post_idx,
+		post_title,
+		post_content
+		FROM post
+		WHERE post_idx = #{idx};
+	</select>
+
+	<update id="modifyPost">
+		UPDATE post
+		SET
+		post_title = #{title},
+        post_content = #{content}
+        WHERE post_idx = #{idx};
+	</update>
+	
+	<delete id ="deletePost">
+		DELETE FROM
+		WHERE post_idx = #{idx};
+	</delete>
+	
 </mapper>
